@@ -1,0 +1,13 @@
+$app-white: rgb(255, 255, 255);
+$app-black: rgb(0, 0, 0);
+$app-dark-blue: rgb(31, 38, 80);
+$app-dark-blue-trans: transparentize($app-dark-blue, .64);
+$app-grey: rgb(197, 197, 197);
+$app-dark-grey: rgb(109, 118, 145);
+$app-dark-grey-trans: rgba(0, 0, 0, .6);
+
+$app-online: #76e820;
+$app-away: #e8e220;
+$app-busy: #e85720;
+$app-inactive: #e8e220;
+$app-offline: rgb(214, 214, 214);

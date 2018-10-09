@@ -1,0 +1,201 @@
+@import '~assets/sass/functions';
+@import '~assets/sass/colors';
+@mixin app-an-template($name, $event, $config, $modifiers) {
+  @each $suffix in $event {
+    &.animate-#{$suffix} {
+      animation: app-an-#{$name}-#{$suffix} #{map-get($modifiers, $suffix)};
+    }
+    @at-root {
+      @keyframes app-an-#{$name}-#{$suffix} {
+        @each $percent, $props in map-get($config, $suffix) {
+          #{$percent}#{'%'} { 
+            @each $prop, $value in $props {
+              #{$prop}: $value;
+            }
+          }
+        } 
+      }
+    }
+  }
+}
+@mixin app-an-heightScale($event: (in out), $config: (), $modifiers: ()) {
+  $defaultConfig: (
+    in: (
+      0: (
+        transform: scale(.5, 0),
+        opacity: 0
+      ),
+      25: (
+        transform: scale(.75, .25),
+        opacity: .1
+      ),
+      100: (
+        transform: scale(1),
+        opacity: .75
+      )
+    ),
+    out: (
+      0: (
+        transform: scale(.8),
+        opacity: .5
+      ),
+      100: (
+        transform: scale(0),
+        opacity: 0
+      )
+    )
+  );
+  $defaultModifiers: (
+    in: .2s ease,
+    out: .125s ease-in
+  );
+  $config: map-merge-deep($defaultConfig, $config);
+  $modifiers: map-merge-deep($defaultModifiers, $modifiers);
+  @include app-an-template(heightScale, $event, $config, $modifiers);
+}
+@mixin app-an-opacityChange($event: (in out), $config: (), $modifiers: ()) {
+  $defaultConfig: (
+    in: (
+      0: (
+        opacity: 0
+      ),
+      100: (
+        opacity: 1
+      )
+    ),
+    out: (
+      0: (
+        opacity: 1
+      ),
+      100: (
+        opacity: 0
+      )
+    )
+  );
+  $defaultModifiers: (
+    in: .35s,
+    out: .35s
+  );
+  $config: map-merge-deep($defaultConfig, $config);
+  $modifiers: map-merge-deep($defaultModifiers, $modifiers);
+  @include app-an-template(opacityChange, $event, $config, $modifiers);
+}
+@mixin app-an-surge($event: (in out), $config: (), $modifiers: ()) {
+  $defaultConfig: (
+    in: (
+      0: (
+        box-shadow: none
+      ),
+      30: (
+        box-shadow: 0px 0px 0px 14px rgba(65, 91, 187, .25)
+      ),
+      100: (
+        box-shadow: 0px 0px 0px 22px rgba(65, 91, 187, 0)
+      )
+    ),
+    out: (
+      0: (
+        box-shadow: none
+      ),
+      30: (
+        box-shadow: 0px 0px 0px 14px rgba(65, 91, 187, .25)
+      ),
+      100: (
+        box-shadow: 0px 0px 0px 22px rgba(65, 91, 187, 0)
+      )
+    )
+  );
+  $defaultModifiers: (
+    in: .25s,
+    out: .25s
+  );
+  $config: map-merge-deep($defaultConfig, $config);
+  $modifiers: map-merge-deep($defaultModifiers, $modifiers);
+  @include app-an-template(surge, $event, $config, $modifiers);
+}
+@mixin app-an-horizontalTranslate($event: (in), $config: (), $modifiers: ()) {
+  $defaultConfig: (
+    in: (
+      0: (
+        left: -100%,
+        width: 0%
+      ),
+      100: (
+        left: 130%,
+        width: 110%
+      )
+    )
+  );
+  $defaultModifiers: (
+    in: 1.85s infinite ease-out
+  );
+  $config: map-merge-deep($defaultConfig, $config);
+  $modifiers: map-merge-deep($defaultModifiers, $modifiers);
+  @include app-an-template(horizontalTranslate, $event, $config, $modifiers);
+}
+@mixin app-an-scaleBounce($event: (in), $config: (), $modifiers: ()) {
+  $defaultConfig: (
+    in: (
+      0: (
+        transform: scale(0)
+      ),
+      40: (
+        transform: scale(1)
+      ),
+      80: (
+        transform: scale(0)
+      ),
+      100: (
+        transform: scale(0)
+      )
+    )
+  );
+  $defaultModifiers: (
+    in: 1.4s infinite ease-in-out both
+  );
+  $config: map-merge-deep($defaultConfig, $config);
+  $modifiers: map-merge-deep($defaultModifiers, $modifiers);
+  @include app-an-template(scaleBounce, $event, $config, $modifiers);
+}
+@mixin app-an-shadowBounce($event: (in), $config: (), $modifiers: ()) {
+  $defaultConfig: (
+    in: (
+      0: (
+        box-shadow: 0 0 2px 1px rgba(112, 120, 147, 0)
+      ),
+      40: (
+        box-shadow: 0 0 2px 3px rgba(112, 120, 147, .4)
+      ),
+      100: (
+        box-shadow: 0 0 2px 1px rgba(112, 120, 147, 0)
+      )
+    )
+  );
+  $defaultModifiers: (
+    in: 1.65s infinite ease-in-out both
+  );
+  $config: map-merge-deep($defaultConfig, $config);
+  $modifiers: map-merge-deep($defaultModifiers, $modifiers);
+  @include app-an-template(shadowBounce, $event, $config, $modifiers);
+}
+@mixin app-an-bgBounce($event: (in), $config: (), $modifiers: ()) {
+  $defaultConfig: (
+    in: (
+      0: (
+        background: $app-dark-grey
+      ),
+      40: (
+        background: darken($app-dark-grey, 10%)
+      ),
+      100: (
+        background: $app-dark-grey
+      )
+    )
+  );
+  $defaultModifiers: (
+    in: 1.65s infinite ease-in-out both
+  );
+  $config: map-merge-deep($defaultConfig, $config);
+  $modifiers: map-merge-deep($defaultModifiers, $modifiers);
+  @include app-an-template(bgBounce, $event, $config, $modifiers);
+}

@@ -1,0 +1,8 @@
+<app-chip class="tag" *ngFor="let tag of tags" [appAnimate]="true" #animateTag="appAnimate">
+  <div>{{tag}}</div>
+  <app-icon name="close" class="close" (click)="animateTag.appAnimate = false || deleteTag(tag)"></app-icon>
+</app-chip>
+<app-icon name="add_box" class="box" *ngIf="tags.size < 5 && !editionMode" (click)="allowInput()"></app-icon>
+<app-chip class="tag" [appAnimate]="true" *ngIf="editionMode">
+  <input type="text" [formControl]="inputControl" (keydown.enter)="appendTag(inputControl.value)" (blur)="hideInput()" maxlength="15" #input>
+</app-chip>

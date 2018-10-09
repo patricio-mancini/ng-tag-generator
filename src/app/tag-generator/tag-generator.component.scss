@@ -1,0 +1,46 @@
+@import '~assets/sass/animations';
+:host {
+  display: flex;
+  flex-flow: row wrap;
+  padding: .2em;
+  user-select: none;
+  box-shadow: 0 0 0px 1px rgba(112, 120, 147, 0.54);
+  background: white;
+  border-radius: 2px;
+  &.error {
+    box-shadow: 0 0 0 2px #f57676;
+    background: #ffd8d8 !important;
+  }
+  .tag {
+    display: inline-flex;
+    margin: .25em;
+    @include app-an-heightScale($modifiers: (in: .1s, out: .1s), $config: (
+      in: (100: (height: 10.800px)),
+      out: (0: (height: 10.800px))
+    ));
+    .close {
+      font-size: .9em;
+      cursor: pointer;
+      position: relative;
+      left: .3em;
+    }
+    input {
+      color: white;
+    }
+  }
+  .box {
+    line-height: 1.9;
+    cursor: pointer;
+    ::ng-deep span {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+  }
+  input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 7em;
+  }
+}

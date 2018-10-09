@@ -1,0 +1,18 @@
+@import '~assets/sass/box-shadow';
+@import '~assets/sass/text-shadow';
+:host {
+  @extend %app-bs-type-2;
+  @extend %app-ts-type-1;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  color: white;
+  padding: .15em .4em;
+  user-select: none;
+  background: #707893;
+  ::ng-deep app-icon {
+    height: auto;
+    width: auto;
+    font-size: 1.3em;
+  }
+}

@@ -1,0 +1,12 @@
+:host {
+  line-height: .5;
+  outline: none;
+  span {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 1em;
+    height: 1em;
+  }
+}
