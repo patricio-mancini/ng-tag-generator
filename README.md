@@ -1,2 +1,2 @@
-# ng-date-picker
-Angular implementation of a date picker component from http://rebat.net
+# ng-tag-generator
+Angular implementation of a tag generator component from http://rebat.net
